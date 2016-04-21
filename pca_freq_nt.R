@@ -21,7 +21,10 @@ calc_freqs <- function(file_name, kmer) {
 }
 
 kmer_freqs <- calc_freqs(file_name, kmer)
+#Calculate PCA 
 pca <- prcomp(kmer_freqs, scale = TRUE, center = TRUE)
+#Create dataframe with the scores of the two first components
 pca_data <- data.frame(PC1 = pca$x[,1], PC2 = pca$x[,2])
+#Plot the data
 ggplot(pca_data, mapping = aes(PC1, PC2)) + geom_point()
 
