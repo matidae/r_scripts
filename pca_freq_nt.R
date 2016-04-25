@@ -30,6 +30,9 @@ z_value<-read.table(file='/home/matias/projects/r_scripts/gcindex', header=FALSE
 pca_data <- data.frame(PC1 = pca$x[,1], PC2 = pca$x[,2], z_val =z_value)
 #Plot the data
 ggplot(data = pca_data, mapping = aes(PC1, PC2)) + 
-  geom_point(shape=19, size=1.5, aes(colour=z_val))
+  geom_point(shape=19, size=1.5, aes(colour=z_val)) +
+  scale_colour_gradientn(colours=c("darkgreen","green","orange", "darkred"), limits=c(0,1)) +
+  labs(colour=" z val", x="PC1", y="PC2", title="PCA spp") +
+  theme(plot.title=element_text(face="bold"))
 
 
